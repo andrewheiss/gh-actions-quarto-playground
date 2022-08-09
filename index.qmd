@@ -10,9 +10,24 @@ To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 library(tidyverse)
 library(gapminder)
 
-gapminder %>% 
+regular_plot <- gapminder %>% 
   filter(year == 2007) %>% 
   ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +
   geom_point() +
   scale_x_log10()
+regular_plot
 ```
+
+
+```{r warning=FALSE, message=FALSE}
+library(ggiraph)
+
+interactive_plot <- gapminder %>% 
+  filter(year == 2007) %>% 
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +
+  geom_point_interactive(aes(tooltip = country)) +
+  scale_x_log10()
+
+girafe(ggobj = interactive_plot)
+```
+
