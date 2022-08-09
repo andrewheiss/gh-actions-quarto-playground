@@ -1,16 +1,16 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "gh-actions-playground",
-    "section": "",
-    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nlibrary(tidyverse)\nlibrary(gapminder)\n\ngapminder %>% \n  filter(year == 2007) %>% \n  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +\n  geom_point() +\n  scale_x_log10()"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "gh-actions-playground",
+    "section": "",
+    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nlibrary(tidyverse)\nlibrary(gapminder)\n\nregular_plot <- gapminder %>% \n  filter(year == 2007) %>% \n  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +\n  geom_point() +\n  scale_x_log10()\nregular_plot\n\n\n\n\n\nlibrary(ggiraph)\n\ninteractive_plot <- gapminder %>% \n  filter(year == 2007) %>% \n  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) +\n  geom_point_interactive(aes(tooltip = country)) +\n  scale_x_log10()\n\ngirafe(ggobj = interactive_plot)"
   }
 ]
